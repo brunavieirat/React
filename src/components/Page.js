@@ -22,20 +22,22 @@ const montaFormNotas = (adicionarNota, excluirNota, editarNota) => {
         editarNota
     }
 
-    return React.createElement(FormNotas, props)
+    return <FormNotas {...props} />
+    //  React.createElement(FormNotas, props)
 }
 
 const montaSecaoNotas = (listaNotas, adicionarNota, excluirNota, editarNota) => {
 
     const props = {
-        key: 'section-notes',
+      //  key: 'section-notes',
         listaNotas,
         adicionarNota,
         excluirNota,
         editarNota
     }
 
-    return React.createElement(SectionNotas, props)
+    return <SectionNotas {...props} />
+    // React.createElement(SectionNotas, props)
 }
 
 
@@ -55,7 +57,7 @@ class Page extends React.Component {
     }
 
     atualizaPagina(novaLista) {
-        console.log('quem é this' + this)
+       // console.log('quem é this' + this)
         this.setState({
             listaNotas: novaLista
         })
@@ -83,14 +85,33 @@ class Page extends React.Component {
 
     render() {
 
+        const { state, adicionarNota, removerNota, editarFormulario } = this
+        const { listaNotas } = state
+
         const props = { className: 'container' }
 
         let formNotas = montaFormNotas(this.adicionarNota, this.excluirNota, this.editarNota)
         let secaoNotas = montaSecaoNotas(this.state.listaNotas, this.adicionarNota, this.excluirNota, this.editarNota)
 
-        const children = [formNotas, secaoNotas]
+        // const children = [formNotas, secaoNotas]
 
-        return React.createElement('main', props, children)
+        return (
+
+            <main {...props}>
+
+            {formNotas}
+            {secaoNotas}
+
+            </main>
+
+        ) 
+        
+        //React.createElement('main', props, children)
+
+
+
+
+        
 
     }
 }

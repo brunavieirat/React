@@ -1015,6 +1015,7 @@ var createInputTitulo = function createInputTitulo(notaAlterada, index) {
     }
 
     return _react2.default.createElement(_formInputReact2.default, props);
+    // React.createElement(FormInput, props)
 };
 
 var createInputTexto = function createInputTexto(notaAlterada, index) {
@@ -1035,6 +1036,7 @@ var createInputTexto = function createInputTexto(notaAlterada, index) {
     }
 
     return _react2.default.createElement(_formTextAreaReact2.default, props);
+    // React.createElement(FormTextArea, props)
 };
 
 var createBotaoSalvar = function createBotaoSalvar(adicionarNota, notaAlterada, index) {
@@ -1049,13 +1051,19 @@ var createBotaoSalvar = function createBotaoSalvar(adicionarNota, notaAlterada, 
 
     var children = 'Salvar';
 
-    return _react2.default.createElement(_formButtonReact2.default, props, children);
+    return _react2.default.createElement(
+        _formButtonReact2.default,
+        props,
+        children,
+        ' '
+    );
+    //React.createElement(FormButton, props, children)
 };
 
 var createButtonRemover = function createButtonRemover(excluirNota, index) {
 
     var props = {
-        key: 'note-button-delete',
+        //  key: 'note-button-delete',
         className: 'note__excluir',
         onClick: function onClick(event) {
             return excluirNota(event, index);
@@ -1067,15 +1075,23 @@ var createButtonRemover = function createButtonRemover(excluirNota, index) {
         'aria-hidden': true
     });
 
-    return _react2.default.createElement(_formButtonReact2.default, props, children);
+    return _react2.default.createElement(
+        _formButtonReact2.default,
+        props,
+        ' ',
+        children,
+        ' '
+    );
+
+    //React.createElement(FormButton, props, children)
 };
 
-function FormNotas(props) {
-    var notaAtual = props.notaAtual,
-        index = props.index,
-        adicionarNota = props.adicionarNota,
-        excluirNota = props.excluirNota,
-        editarNota = props.editarNota;
+function FormNotas(_ref) {
+    var notaAtual = _ref.notaAtual,
+        index = _ref.index,
+        adicionarNota = _ref.adicionarNota,
+        excluirNota = _ref.excluirNota,
+        editarNota = _ref.editarNota;
 
 
     var notaAlterada = new _Nota2.default(notaAtual.titulo, notaAtual.texto, notaAtual.editando);
@@ -1086,7 +1102,7 @@ function FormNotas(props) {
     var botaoSalvar = createBotaoSalvar(adicionarNota, notaAlterada, index);
 
     // let children;
-    var propsForm = { className: 'note' };
+    var props = { className: 'note' };
 
     // if (index === undefined) {
     //     // template nova nota
@@ -1116,7 +1132,7 @@ function FormNotas(props) {
         index !== undefined && notaAlterada.editando && botaoExcluir,
         inputTitulo,
         inputTexto,
-        (index !== undefined || notaAlterada.editando) && botaoSalvar
+        (index == undefined || notaAlterada.editando) && botaoSalvar
     );
     // React.createElement(Form, propsForm, children)
 }
@@ -18514,12 +18530,13 @@ var montaFormNotas = function montaFormNotas(adicionarNota, excluirNota, editarN
     };
 
     return _react2.default.createElement(_FormNotasReact2.default, props);
+    //  React.createElement(FormNotas, props)
 };
 
 var montaSecaoNotas = function montaSecaoNotas(listaNotas, adicionarNota, excluirNota, editarNota) {
 
     var props = {
-        key: 'section-notes',
+        //  key: 'section-notes',
         listaNotas: listaNotas,
         adicionarNota: adicionarNota,
         excluirNota: excluirNota,
@@ -18527,6 +18544,7 @@ var montaSecaoNotas = function montaSecaoNotas(listaNotas, adicionarNota, exclui
     };
 
     return _react2.default.createElement(_secaoNotasReact2.default, props);
+    // React.createElement(SectionNotas, props)
 };
 
 var Page = function (_React$Component) {
@@ -18551,7 +18569,7 @@ var Page = function (_React$Component) {
     _createClass(Page, [{
         key: 'atualizaPagina',
         value: function atualizaPagina(novaLista) {
-            console.log('quem é this' + this);
+            // console.log('quem é this' + this)
             this.setState({
                 listaNotas: novaLista
             });
@@ -18581,15 +18599,29 @@ var Page = function (_React$Component) {
     }, {
         key: 'render',
         value: function render() {
+            var state = this.state,
+                adicionarNota = this.adicionarNota,
+                removerNota = this.removerNota,
+                editarFormulario = this.editarFormulario;
+            var listaNotas = state.listaNotas;
+
 
             var props = { className: 'container' };
 
             var formNotas = montaFormNotas(this.adicionarNota, this.excluirNota, this.editarNota);
             var secaoNotas = montaSecaoNotas(this.state.listaNotas, this.adicionarNota, this.excluirNota, this.editarNota);
 
-            var children = [formNotas, secaoNotas];
+            // const children = [formNotas, secaoNotas]
 
-            return _react2.default.createElement('main', props, children);
+            return _react2.default.createElement(
+                'main',
+                props,
+                formNotas,
+                secaoNotas
+            );
+
+            //React.createElement('main', props, children)
+
         }
     }]);
 
@@ -18859,7 +18891,7 @@ var Form = function Form(_ref) {
     return _react2.default.createElement(
         'form',
         props,
-        props.children
+        children
     );
 };
 

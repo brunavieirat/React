@@ -24,7 +24,8 @@ const createInputTitulo = (notaAlterada, index) => {
         props.readOnly = true
     }
 
-    return React.createElement(FormInput, props)
+    return <FormInput {...props}/>
+   // React.createElement(FormInput, props)
 }
 
 const createInputTexto = (notaAlterada, index) => {
@@ -44,7 +45,8 @@ const createInputTexto = (notaAlterada, index) => {
         props.readOnly = true
     }
 
-    return React.createElement(FormTextArea, props)
+    return <FormTextArea {...props} />
+    // React.createElement(FormTextArea, props)
 }
 
 const createBotaoSalvar = (adicionarNota, notaAlterada, index) => {
@@ -57,14 +59,14 @@ const createBotaoSalvar = (adicionarNota, notaAlterada, index) => {
 
     const children = 'Salvar'
 
-    return React.createElement(FormButton, props, children)
-
+    return <FormButton {...props}>{children} </FormButton>
+    //React.createElement(FormButton, props, children)
 };
 
 const createButtonRemover = (excluirNota, index) => {
 
     const props = {
-        key: 'note-button-delete',
+      //  key: 'note-button-delete',
         className: 'note__excluir',
         onClick: event => excluirNota(event, index)
     }
@@ -74,12 +76,17 @@ const createButtonRemover = (excluirNota, index) => {
         'aria-hidden': true
     })
 
-    return React.createElement(FormButton, props, children)
+    
+
+    return <FormButton {...props}> {children} </FormButton>
+
+    
+    //React.createElement(FormButton, props, children)
 };
 
 
-function FormNotas(props) {
-    const { notaAtual, index, adicionarNota, excluirNota, editarNota } = props;
+function FormNotas({notaAtual, index, adicionarNota, excluirNota, editarNota}) {
+    
 
     let notaAlterada = new Nota(notaAtual.titulo, notaAtual.texto, notaAtual.editando)
 
@@ -89,7 +96,7 @@ function FormNotas(props) {
     let botaoSalvar = createBotaoSalvar(adicionarNota, notaAlterada, index);
 
     // let children;
-    let propsForm = { className: 'note' };
+    let props = { className: 'note' };
 
     // if (index === undefined) {
     //     // template nova nota
@@ -118,7 +125,7 @@ function FormNotas(props) {
         {index !== undefined && notaAlterada.editando && botaoExcluir}
         {inputTitulo}
         {inputTexto}
-        {(index !==undefined || notaAlterada.editando) && botaoSalvar}
+        {(index ==undefined || notaAlterada.editando) && botaoSalvar}
         </Form>
 
     )

@@ -19,7 +19,7 @@ import React from 'react'
 
 const Form = ({children, ...props}) =>(
 <form {...props}>
-    {props.children}
+    {children}
 
 </form>
 
