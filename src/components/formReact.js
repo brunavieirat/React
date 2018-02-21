@@ -17,6 +17,13 @@ import React from 'react'
 
 // export default props => React.createElement('form', props)
 
-const Form = props => React.createElement('form', props)
+const Form = ({children, ...props}) =>(
+<form {...props}>
+    {props.children}
+
+</form>
+
+)
+
 
 export default Form
