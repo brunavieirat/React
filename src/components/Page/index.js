@@ -1,8 +1,10 @@
 import React from 'react'
-import SectionNotas from './secaoNotasReact'
-import FormNotas from './FormNotasReact'
-import Nota from '../Nota'
-import NovaLista from '../ClasseNovaLista'
+import SectionNotas from '../secaoNotasReact'
+import FormNotas from '../FormNotasReact'
+import Nota from '../../Nota'
+import NovaLista from '../../ClasseNovaLista'
+
+import './page.css'
 
 
 
@@ -56,6 +58,7 @@ class Page extends React.Component {
         }
     }
 
+   
     atualizaPagina(novaLista) {
        // console.log('quem é this' + this)
         this.setState({
@@ -88,7 +91,9 @@ class Page extends React.Component {
         const { state, adicionarNota, removerNota, editarFormulario } = this
         const { listaNotas } = state
 
-        const props = { className: 'container' }
+        // const props = { className: 'container' }
+
+
 
         let formNotas = montaFormNotas(this.adicionarNota, this.excluirNota, this.editarNota)
         let secaoNotas = montaSecaoNotas(this.state.listaNotas, this.adicionarNota, this.excluirNota, this.editarNota)
@@ -97,7 +102,8 @@ class Page extends React.Component {
 
         return (
 
-            <main {...props}>
+            // <main {...props}>
+            <main className='container'>
 
             {formNotas}
             {secaoNotas}
