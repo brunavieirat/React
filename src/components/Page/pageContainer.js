@@ -1,11 +1,11 @@
-import react from React
+import React from 'react'
 import { connect } from 'react-redux'
 
-import { adicionarNota, editarNota, habilitarNota, salvarNota } from '../../../actions'
+import { adicionarNota, editarNota, habilitarEdicao, removerNota, salvarNota } from '../../../actions'
 
 import Page from './index'
 
-const mapStateToProps = store => ({ listaNotas: state.notas })
+const mapStateToProps = store => ({ listaNotas: store.notas })
 
 
 const mapDispatchToProps = dispatch => (
@@ -17,27 +17,21 @@ const mapDispatchToProps = dispatch => (
                 formulario.reset()
             }
             else {
-                dispatch(editarNota(index, titulo, texto))
+                dispatch(salvarNota(index, titulo, texto))
             }
         },
 
-        removerNota: (evento, index) => {
+        excluirNota: (evento, index) => {
             evento.stopPropagation()
-            dispacth(removerNota(index))
+            dispatch(removerNota(index))
 
         },
 
         editarNota: index => {
-            dispatch(habilitarEdicao)
+            console.log('sssssssssssssss')
+            dispatch(habilitarEdicao(index))
         }
-
-
-
-
-    }
-
-
-)
+    })
 
 const PageContainer = connect(mapStateToProps, mapDispatchToProps)(Page)
 

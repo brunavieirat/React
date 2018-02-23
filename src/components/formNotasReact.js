@@ -9,7 +9,7 @@ import Nota from '../Nota'
 
 const createInputTitulo = (notaAlterada, index) => {
     const props = {
-        key: 'note-title',
+        // key: 'note-title',
         className: 'note__title',
         type: 'text',
         name: 'title',
@@ -30,7 +30,7 @@ const createInputTitulo = (notaAlterada, index) => {
 
 const createInputTexto = (notaAlterada, index) => {
     const props = {
-        key: 'note-body',
+        // key: 'note-body',
         className: 'note__body',
         name: 'body',
         rows: '5',
@@ -114,13 +114,18 @@ function FormNotas({notaAtual, index, adicionarNota, excluirNota, editarNota}) {
     // }
 
 
+    if(notaAlterada.editando===false){
+
+        props.onClick = () => editarNota(index);
+    }
+
+
     // if (notaAlterada.editando === true) {
     //     formNotas.className = 'note note--editing';
     //     inputTitulo.className = 'note__title note--editing';
     //     inputTexto.className = 'note__body note__body--editing';
     // }
-
-    return (
+    let a = (
     <Form {...props}>
         {index !== undefined && notaAlterada.editando && botaoExcluir}
         {inputTitulo}
@@ -129,6 +134,8 @@ function FormNotas({notaAtual, index, adicionarNota, excluirNota, editarNota}) {
         </Form>
 
     )
+    console.log(a)
+    return a 
     // React.createElement(Form, propsForm, children)
 }
 

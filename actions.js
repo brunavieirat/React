@@ -8,7 +8,7 @@ export const EDICAO_TRUE = 'EDICAO_TRUE'
 
 
 export function adicionarNota(titulo, texto) {
-
+    console.log(titulo, texto);
     return {
         type: ADICIONAR_NOTA,
         titulo,

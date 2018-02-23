@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import Page from './components/Page'
+import PageContainer from './components/Page/pageContainer'
 import {createStore} from 'redux'
 import redutor from '../reducers'
 import {Provider} from 'react-redux'
@@ -9,7 +9,7 @@ import {Provider} from 'react-redux'
 let store = createStore(redutor)
 ReactDOM.render( 
     <Provider store = {store}>
-    <Page/>    
+    <PageContainer/>    
 
     </Provider>,
     // React.createElement('h1', { className: 'heading'}, 'Ooooooi Brunaaaa'), 

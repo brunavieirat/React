@@ -20,7 +20,7 @@ const createFormNotas = (adicionarNota, excluirNota, editarNota, notaAtual, inde
 }
 
 
-function SecaoNotas({ listaNotas, adicionarNota, excluirNota, editarNota }) {
+function SecaoNotas({ listaNotas, adicionarNota, excluirNota, editarNota, notaAtual }) {
 
     // let secao = React.getElementsByClassName('notes')[0];
 
@@ -29,7 +29,7 @@ function SecaoNotas({ listaNotas, adicionarNota, excluirNota, editarNota }) {
     const children = listaNotas.map((notaAtual, index) => (
         createFormNotas(adicionarNota, excluirNota, editarNota, notaAtual, index)
     ))
-
+    console.log(children);
     return <Section {...props}>{children}</Section>
     
     

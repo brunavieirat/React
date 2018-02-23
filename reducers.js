@@ -15,18 +15,18 @@ export default function redutor(newstate = initialState, acao) {
 
     switch (acao.type) {
         case ADICIONAR_NOTA:
-
+            console.log(acao);
             const novaNota = new Nota(acao.titulo, acao.texto)             //concat
                                    
 
             return {
-                notas: newState.notas.concat(novaNota)
+                notas: newstate.notas.concat(novaNota)
             }
 
         case EDICAO_TRUE:
             return {
 
-                notas: newState.notas.map((notaAtual, posicao) => {
+                notas: newstate.notas.map((notaAtual, posicao) => {
                     if (posicao === acao.posicao) {
                         return new Nota(notaAtual.titulo, notaAtual.texto, true)
                     } else {
@@ -51,13 +51,13 @@ export default function redutor(newstate = initialState, acao) {
             }
 
 
-            return newState;         //map
+            // return newstate;         //map
 
         case REMOVER_NOTA:
             
 
                return{
-                    notas: newState.notas.filter((notaAtual, posicao) =>  posicao !== acao.posicao)
+                    notas: newstate.notas.filter((notaAtual, posicao) =>  posicao !== acao.posicao)
                 }
 
             
