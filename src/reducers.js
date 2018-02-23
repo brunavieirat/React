@@ -5,7 +5,7 @@ import {
     EDICAO_TRUE
 } from './actions'
 
-import Nota from './src/Nota'
+import Nota from './nota'
 
 const initialState = {
     notas: []

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 
 import PageContainer from './components/Page/pageContainer'
 import {createStore} from 'redux'
-import redutor from '../reducers'
+import redutor from './reducers'
 import {Provider} from 'react-redux'
 
 let store = createStore(redutor)

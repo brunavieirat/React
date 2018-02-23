@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { adicionarNota, editarNota, habilitarEdicao, removerNota, salvarNota } from '../../../actions'
+import { adicionarNota, editarNota, habilitarEdicao, removerNota, salvarNota } from '../../actions'
 
 import Page from './index'
 
