@@ -11,21 +11,20 @@ const initialState = {
     notas: []
 }
 
-function App(state = initialState, acao) {
+export default function redutor(newstate = initialState, acao) {
 
     switch (acao.type) {
         case ADICIONAR_NOTA:
 
-            const novaNota = new Nota(acao.titulo, acao.texto);             //concat
-            const newstate = {
+            const novaNota = new Nota(acao.titulo, acao.texto)             //concat
+                                   
+
+            return {
                 notas: newState.notas.concat(novaNota)
             }
 
-            return newstate;
-    
-
         case EDICAO_TRUE:
-            const newstate = {
+            return {
 
                 notas: newState.notas.map((notaAtual, posicao) => {
                     if (posicao === acao.posicao) {
@@ -37,10 +36,10 @@ function App(state = initialState, acao) {
                 })
             }
 
-            return newstate;       //map  
+                 //map  
 
         case EDITAR_NOTA:
-            const newState = {
+           return  {
 
                 notas: newstate.notas.map((notaAtual, posicao) => {
                     if (posicao === acao.posicao) {
@@ -55,18 +54,16 @@ function App(state = initialState, acao) {
             return newState;         //map
 
         case REMOVER_NOTA:
-            const newstate = {
+            
 
-                notas: newState.notas.filter((notaAtual, posicao) => {
-                    return posicao !== acao.posicao
-                })
+               return{
+                    notas: newState.notas.filter((notaAtual, posicao) =>  posicao !== acao.posicao)
+                }
 
-            }
-
-            return newstate;
+            
 
             default:
-            return state
+            return newstate
 
     }
 

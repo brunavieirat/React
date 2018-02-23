@@ -14,7 +14,7 @@ import './page.css'
 // const listaNotas = new NovaLista(observaMudancasNaLista);
 
 
-const montaFormNotas = (adicionarNota, excluirNota, editarNota) => {
+function montaFormNotas  (adicionarNota, excluirNota, editarNota) {
 
     const props = {
         key: 'form-note',
@@ -28,7 +28,7 @@ const montaFormNotas = (adicionarNota, excluirNota, editarNota) => {
     //  React.createElement(FormNotas, props)
 }
 
-const montaSecaoNotas = (listaNotas, adicionarNota, excluirNota, editarNota) => {
+function montaSecaoNotas(listaNotas, adicionarNota, excluirNota, editarNota)  {
 
     const props = {
         //  key: 'section-notes',
@@ -49,7 +49,7 @@ function Page  ({ listaNotas, adicionarNota, excluirNota, editarNota }) {
 
 
     let formNotas = montaFormNotas(adicionarNota, excluirNota, editarNota)
-    let secaoNotas = montaSecaoNotas(state.listaNotas, adicionarNota, excluirNota, editarNota)
+    let secaoNotas = montaSecaoNotas(listaNotas, adicionarNota, excluirNota, editarNota)
 
     // const children = [formNotas, secaoNotas]
 
