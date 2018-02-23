@@ -1,34 +1,11 @@
-// ações
 
 
+export const ADICIONAR_NOTA = 'ADICIONAR_NOTA'
+export const EDITAR_NOTA = 'EDITAR_NOTA'
+export const REMOVER_NOTA = 'REMOVER_NOTA'
+export const EDICAO_TRUE = 'EDICAO_TRUE'
 
-// Adicionar nota - adicionar
-// salvar
-// Editar nota  - editar 
-// Excluir - remove
-// atualizar pag
 
-// secao notas
-
-// criação dos componentes - input, textarea, forms, section, button
-
-ADD
-EDIT
-REMOVE
-SAVE
-
-// const ADICIONAR_NOTA = 'ADICIONAR_NOTA'
-
-// {
-//     type: ADICIONAR_NOTA,
-//     titulo: ???,
-//     texto: ??? 
-// }
-
-const ADICIONAR_NOTA = 'ADICIONAR_NOTA'
-const EDITAR_NOTA = 'EDITAR_NOTA'
-const REMOVER_NOTA = 'REMOVER_NOTA'
-const EDICAO_TRUE = 'EDICAO_TRUE'
 
 export function addNota(titulo, texto) {
 
