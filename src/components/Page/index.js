@@ -31,7 +31,7 @@ const montaFormNotas = (adicionarNota, excluirNota, editarNota) => {
 const montaSecaoNotas = (listaNotas, adicionarNota, excluirNota, editarNota) => {
 
     const props = {
-      //  key: 'section-notes',
+        //  key: 'section-notes',
         listaNotas,
         adicionarNota,
         excluirNota,
@@ -43,83 +43,31 @@ const montaSecaoNotas = (listaNotas, adicionarNota, excluirNota, editarNota) => 
 }
 
 
-class Page extends React.Component {
 
-    constructor(props) {
-        super(props)
-
-        this.atualizaPagina = this.atualizaPagina.bind(this)
-        this.adicionarNota = this.adicionarNota.bind(this)
-        this.editarNota = this.editarNota.bind(this)
-        this.excluirNota = this.excluirNota.bind(this)
-
-        this.state = {
-            listaNotas: new NovaLista(this.atualizaPagina)
-        }
-    }
-
-   
-    atualizaPagina(novaLista) {
-       // console.log('quem é this' + this)
-        this.setState({
-            listaNotas: novaLista
-        })
-    }
-
-    editarNota(index) {
-        this.state.listaNotas.editar(index)
-    }
-
-    adicionarNota(titulo, texto, formulario, index) {
-
-        if (this.state.listaNotas.pegar(index)) {
-            this.state.listaNotas.salvar(index, titulo, texto);
-        } else {
-            this.state.listaNotas.adicionar(titulo, texto);
-            formulario.reset();
-        }
-    }
-
-    excluirNota(evento, index) {
-        evento.stopPropagation();
-        this.state.listaNotas.remover(index);
-    }
+function Page  ({ listaNotas, adicionarNota, excluirNota, editarNota }) {
+    const props = { className: 'container' }
 
 
-    render() {
+    let formNotas = montaFormNotas(adicionarNota, excluirNota, editarNota)
+    let secaoNotas = montaSecaoNotas(state.listaNotas, adicionarNota, excluirNota, editarNota)
 
-        const { state, adicionarNota, removerNota, editarFormulario } = this
-        const { listaNotas } = state
+    // const children = [formNotas, secaoNotas]
 
-        // const props = { className: 'container' }
+    return (
 
-
-
-        let formNotas = montaFormNotas(this.adicionarNota, this.excluirNota, this.editarNota)
-        let secaoNotas = montaSecaoNotas(this.state.listaNotas, this.adicionarNota, this.excluirNota, this.editarNota)
-
-        // const children = [formNotas, secaoNotas]
-
-        return (
-
-            // <main {...props}>
-            <main className='container'>
+        // <main {...props}>
+        <main className='container'>
 
             {formNotas}
             {secaoNotas}
 
-            </main>
+        </main>
 
-        ) 
-        
-        //React.createElement('main', props, children)
+    )
 
-
+    //React.createElement('main', props, children)
 
 
-        
-
-    }
 }
 
 export default Page;

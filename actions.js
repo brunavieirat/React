@@ -7,7 +7,7 @@ export const EDICAO_TRUE = 'EDICAO_TRUE'
 
 
 
-export function addNota(titulo, texto) {
+export function adicionarNota(titulo, texto) {
 
     return {
         type: ADICIONAR_NOTA,
@@ -18,7 +18,7 @@ export function addNota(titulo, texto) {
 }
 
 
-export function removeNota(posicao) {
+export function removerNota(posicao) {
 
     return {
 
@@ -33,7 +33,7 @@ export function removeNota(posicao) {
 
 // }
 
-export function editarNota(posicao) {
+export function habilitarEdicao(posicao) {
     return {
 
         type: EDICAO_TRUE,

@@ -7,7 +7,7 @@ const createFormNotas = (adicionarNota, excluirNota, editarNota, listaNotas, ind
 
     const props = {
         key: index,
-        notaAtual: listaNotas.pegar(index), 
+        notaAtual: listaNotas[index], 
         index: index, 
         adicionarNota: adicionarNota, 
         excluirNota: excluirNota, 
@@ -30,7 +30,7 @@ function SecaoNotas ( { listaNotas, adicionarNota, excluirNota, editarNota } ) {
 
     return (
         <Section {...props}>
-            {listaNotas.pegarTodos().map( (notaAtual, index) => (
+            {listaNotas.map( (notaAtual, index) => (
         createFormNotas(adicionarNota, excluirNota, editarNota, listaNotas, index)
     ))   }
             </Section>

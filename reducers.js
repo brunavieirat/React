@@ -21,7 +21,8 @@ function App(state = initialState, acao) {
                 notas: newState.notas.concat(novaNota)
             }
 
-            return newstate
+            return newstate;
+    
 
         case EDICAO_TRUE:
             const newstate = {
@@ -36,7 +37,7 @@ function App(state = initialState, acao) {
                 })
             }
 
-            return newstate         //map  
+            return newstate;       //map  
 
         case EDITAR_NOTA:
             const newState = {
@@ -45,31 +46,29 @@ function App(state = initialState, acao) {
                     if (posicao === acao.posicao) {
                         return new Nota(acao.titulo, acao.texto, false)
                     } else {
-                        return notaAtual
+                        return notaAtual;
                     }
                 })
             }
-    
 
-    return          //map
+
+            return newState;         //map
 
         case REMOVER_NOTA:
-    const newstate = {
+            const newstate = {
 
-        notas: newState.notas.filter((notaAtual, posicao) => {
-            return posicao !== acao.posicao
-        })
+                notas: newState.notas.filter((notaAtual, posicao) => {
+                    return posicao !== acao.posicao
+                })
+
+            }
+
+            return newstate;
+
+            default:
+            return state
 
     }
 
-    return newstate
-
-
 }
 
-}
-
-
-
-return state
-}
