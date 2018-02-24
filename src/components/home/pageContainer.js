@@ -28,7 +28,7 @@ const mapDispatchToProps = dispatch => (
         },
 
         editarNota: index => {
-            console.log('sssssssssssssss')
+            
             dispatch(habilitarEdicao(index))
         }
     })

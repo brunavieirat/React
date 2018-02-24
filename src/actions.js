@@ -4,11 +4,25 @@ export const ADICIONAR_NOTA = 'ADICIONAR_NOTA'
 export const EDITAR_NOTA = 'EDITAR_NOTA'
 export const REMOVER_NOTA = 'REMOVER_NOTA'
 export const EDICAO_TRUE = 'EDICAO_TRUE'
+export const LOGAR_USUARIO = 'LOGAR_USUARIO'
+export const DESLOGAR_USUARIO = 'DESLOGAR_USUARIO'
 
+
+export function logaUsuario(){
+   return{
+        type: LOGAR_USUARIO
+   }
+}
+
+export function deslogaUsuario(){
+    return {
+    type: DESLOGAR_USUARIO
+    }
+}
 
 
 export function adicionarNota(titulo, texto) {
-    console.log(titulo, texto);
+    
     return {
         type: ADICIONAR_NOTA,
         titulo,

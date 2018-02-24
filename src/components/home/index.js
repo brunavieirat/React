@@ -6,6 +6,8 @@ import NovaLista from '../../ListaNotas'
 
 import './page.css'
 
+import { connect } from 'react-redux'
+import { adicionarNota, editarNota, habilitarEdicao, removerNota, salvarNota, logaUsuario, deslogaUsuario } from '../../actions'
 
 
 // let secao = document.getElementsByClassName('notes')[0];
@@ -51,9 +53,34 @@ function Page  ({ listaNotas, adicionarNota, excluirNota, editarNota }) {
     let formNotas = montaFormNotas(adicionarNota, excluirNota, editarNota)
     let secaoNotas = montaSecaoNotas(listaNotas, adicionarNota, excluirNota, editarNota)
 
-    // const children = [formNotas, secaoNotas]
+const mapStateToProps = store => ({ listaNotas: store.notas })
 
-    return (
+
+const mapDispatchToProps = dispatch => (
+    {
+        adicionarNota: (titulo, texto, formulario, index) => {
+
+            if (index == undefined) {
+                dispatch(adicionarNota(titulo, texto))
+                formulario.reset()
+            }
+            else {
+                dispatch(salvarNota(index, titulo, texto))
+            }
+        },
+
+        excluirNota: (evento, index) => {
+            evento.stopPropagation()
+            dispatch(removerNota(index))
+
+        },
+
+        editarNota: index => {
+            
+            dispatch(habilitarEdicao(index))
+        }
+    })
+  return (
 
         // <main {...props}>
         <main className='container'>
@@ -65,10 +92,12 @@ function Page  ({ listaNotas, adicionarNota, excluirNota, editarNota }) {
 
     )
 
-    //React.createElement('main', props, children)
-
-
 }
+
+
+const PageContainer = connect(mapStateToProps, mapDispatchToProps)(Page)
+
+export default PageContainer
 
 export default Page;
 

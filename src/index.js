@@ -7,6 +7,7 @@ import redutor from './reducers'
 import {Provider} from 'react-redux'
 
 let store = createStore(redutor)
+
 ReactDOM.render( 
     <Provider store = {store}>
     <PageContainer/>    
